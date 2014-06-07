@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>2048-Tetris</title>
+  <title>2048-Stacko</title>
 
   <link href="style/main.css" rel="stylesheet" type="text/css">
   <link rel="shortcut icon" href="favicon.ico">
@@ -13,9 +13,9 @@
   <meta name="MobileOptimized" content="320">
   <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0, maximum-scale=1, user-scalable=no, minimal-ui">
 
-  <meta property="og:title" content="2048 Tetris"/>
-  <meta property="og:site_name" content="2048 Tetris"/>
-  <meta property="og:description" content="2048 with the awesomeness of Tetris! Careful: this game is extremely addictive!"/>
+  <meta property="og:title" content="2048 Stacko"/>
+  <meta property="og:site_name" content="2048 Stacko"/>
+  <meta property="og:description" content="2048 with the awesomeness of Stacko! Careful: this game is extremely addictive!"/>
   <meta property="og:image" content="http://gabrielecirulli.github.io/2048/meta/og_image.png"/>
 </head>
 <!-- body starts here-->
@@ -32,7 +32,7 @@
         <!-- <input type="button" style="margin:10px" onclick="pause();" value="Pause" id="Pause"> -->
     </div>
     <span style="font-size: 12px; padding-left: 16px">
-    Tip: Falling tile can be collapsed in left/right directions till timeout. Press Space to pause</span>
+    Tip: Falling tile can be collapsed in left/right directions. Press Space to pause</span>
     <div class="game-container">
       <div class="game-message">
         <p></p>
@@ -106,18 +106,12 @@
     </div>
 
     <p class="game-explanation">
-        <p class="game-intro">Collapse the falling blocks in left, right or downward direction and get to the <strong>2048 tile!</strong></p>
+        <p class="game-intro">Collapse the falling blocks and get to the <strong>2048 tile!</strong></p>
     </p>
     <hr>
     <p>
     Enhanced by <a href="https://github.com/jeffryhartanto" target="_blank">Jeffry Hartanto</a>. 2048 Created by <a href="http://gabrielecirulli.com" target="_blank">Gabriele Cirulli.</a> Based on <a href="https://itunes.apple.com/us/app/1024!/id823499224" target="_blank">1024 by Veewo Studio</a> and conceptually similar to <a href="http://asherv.com/threes/" target="_blank">Threes by Asher Vollmer.</a>
     </p>
-    <div class="sharing">
-      <iframe src="http://ghbtns.com/github-btn.html?user=prat0318&repo=2048-tetris&type=watch"
-      allowtransparency="true" frameborder="0" scrolling="0" width="62" height="20"></iframe>
-      <iframe src="http://ghbtns.com/github-btn.html?user=prat0318&repo=2048-tetris&type=fork"
-        allowtransparency="true" frameborder="0" scrolling="0" width="53" height="20"></iframe>
-    </div>
   </div>
 
   <script type='text/javascript' > 
@@ -139,16 +133,6 @@
   <script src="js/game_manager.js"></script>
   <script src="js/application.js"></script>
 
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-49179912-1', 'prat0318.github.io');
-  ga('send', 'pageview');
-
-</script>
 <script>
   function pause() {
     var elem = document.getElementById("Pause");
