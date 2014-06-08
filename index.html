@@ -20,6 +20,15 @@
 </head>
 <!-- body starts here-->
 <body>
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+  
   <div class="next-tile-container"></div>
   <div class="container">
     <div class="heading">
@@ -33,6 +42,13 @@
     </div>
     <span style="font-size: 12px; padding-left: 16px">
     Tip: Falling tile can be collapsed in left/right directions. Press Space to pause</span>
+
+    <a href="http://jeffryhartanto.github.io" class="twitter-share-button">Tweet</a>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+
+   <div class="fb-share-button" data-href="http://jeffryhartanto.github.io" data-type="button_count"></div>
+
     <div class="game-container">
       <div class="game-message">
         <p></p>
@@ -113,7 +129,6 @@
     Enhanced by <a href="https://github.com/jeffryhartanto" target="_blank">Jeffry Hartanto</a>. 2048 Created by <a href="http://gabrielecirulli.com" target="_blank">Gabriele Cirulli.</a> Based on <a href="https://itunes.apple.com/us/app/1024!/id823499224" target="_blank">1024 by Veewo Studio</a> and conceptually similar to <a href="http://asherv.com/threes/" target="_blank">Threes by Asher Vollmer.</a>
     </p>
   </div>
-
   <script type='text/javascript' > 
     window.timeOut = 700; 
     window.autoFall = null;
@@ -132,7 +147,6 @@
   <script src="js/local_score_manager.js"></script>
   <script src="js/game_manager.js"></script>
   <script src="js/application.js"></script>
-
 <script>
   function pause() {
     var elem = document.getElementById("Pause");
