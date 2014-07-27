@@ -32,7 +32,7 @@ Grid.prototype.randomAvailableCell = function () {
   var cells = this.availableCells();
 
   if (cells.length) {
-    return ({ x: Math.floor(Math.random()*3), y: 0});
+    return ({ x: Math.floor(Math.random()*100) % 4, y: 0});
     //return cells[Math.floor(Math.random() * (cells.lengt%4))];
   }
 };
