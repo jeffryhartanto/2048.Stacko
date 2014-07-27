@@ -180,13 +180,9 @@ GameManager.prototype.player_move = function (direction) {
       if( i != dont_move)
         self.moveTile(temp_player_tile.tile[i],temp_player_tile.farthest[i]);
       this.grid.player_tile.push(temp_player_tile.tile[i]);
-    };
-    //for(var i = 0; i < this.grid.player_tile.length; i++)
-    //      console.log("test 0 :" +this.grid.player_tile[i].x + " " + this.grid.player_tile[i].y + " " + this.grid.player_tile[i].value)
+    }; 
   }
-
   this.actuate();
-
 }
 // Move tiles on the grid in the specified direction
 GameManager.prototype.move = function (direction) {
@@ -268,7 +264,6 @@ GameManager.prototype.move = function (direction) {
         this.grid.player_tile.push(tile);
       }
       else{//if merged in the middle
-        //console.log(merged_position + " " + this.grid.player_tile.length)
         for(var i = merged_position; i < this.grid.player_tile.length - 1; i++){
           this.grid.player_tile[i].value = this.grid.player_tile[i + 1].value;
           self.grid.insertTile(this.grid.player_tile[i]);
@@ -276,26 +271,9 @@ GameManager.prototype.move = function (direction) {
         this.grid.player_tile[merged_position - 1] = tile;    
         this.grid.removeTile(this.grid.player_tile[this.grid.player_tile.length - 1]);
         this.grid.player_tile.splice(this.grid.player_tile.length - 1, 1);
-
-        /*for(var i = merged_position; i < this.grid.player_tile.length - 1; i++){
-          this.grid.player_tile[i].value = this.grid.player_tile[i + 1].value;
-          self.moveTile(this.grid.player_tile[i + 1],this.grid.player_tile[i]);
-        }
-        this.grid.player_tile[merged_position - 1] = tile;    
-        this.grid.player_tile.splice(this.grid.player_tile.length - 1, 1);*/
-        //for(var i = 0; i < this.grid.player_tile.length; i++)
-        //  console.log("test 1 :" +this.grid.player_tile[i].x + " " + this.grid.player_tile[i].y + " " + this.grid.player_tile[i].value)
       }
-      /*if(!this.positionsEqual(cell,this.grid.player_tile[this.grid.player_tile.length - 1])){
-        this.grid.player_tile.splice(this.grid.player_tile.length - 1, 1);
-        this.grid.player_tile.push(tile);
-      } 
-      else{
-        this.grid.player_tile.splice(this.grid.player_tile.length - 1, 1);
-        this.grid.player_tile[this.grid.player_tile.length - 1] = tile;    
-      }*/
     }
-   this.actuate();
+    this.actuate();
   } else {
     if((direction == 2 || direction == 4) && this.grid.falling.y == 0)
       this.over = true; // Game over!
@@ -306,6 +284,7 @@ GameManager.prototype.move = function (direction) {
           if(this.positionsEqual(self.grid.falling, this.grid.player_tile[i])){
             merged_position = i;
             addNewTile = false;
+            break;
           }
       } 
       if(addNewTile == true){
@@ -344,19 +323,7 @@ GameManager.prototype.move = function (direction) {
             break;
           }
         }
-        //for(var i = 0; i < this.grid.player_tile.length; i++)
-        //  console.log("test 3:" + this.grid.player_tile[i].x + " " + this.grid.player_tile[i].y + " " + this.grid.player_tile[i].value)
       }
-      /*if(!this.positionsEqual(this.grid.player_tile[this.grid.player_tile.length - 1], self.grid.falling)){
-        if(this.grid.player_tile[this.grid.player_tile.length - 1].y - 1 == self.grid.falling.y)
-          this.grid.player_tile.push(tile);
-        else
-          this.grid.removeTile(tile);
-      }
-      else{
-        this.grid.player_tile.splice(this.grid.player_tile.length - 1, 1);
-        this.grid.player_tile.push(tile); 
-      }*/
       this.addRandomTile();
     }
     this.actuate();
@@ -380,33 +347,12 @@ GameManager.prototype.getVector = function (direction) {
 // Build a list of positions to traverse in the right order
 GameManager.prototype.buildTraversals = function (vector) {
   var traversals = { x: [], y: [] };
-
-  /*for (var pos = 0; pos < this.size; pos++) {
-    traversals.x.push(pos);
-    traversals.y.push(pos);
-  }
-    traversals.y.push(this.size);
-
-  // Always traverse from the farthest cell in the chosen direction
-  if (vector.x === 1) traversals.x = traversals.x.reverse();
-  if (vector.y === 1) traversals.y = traversals.y.reverse();*/
   if (vector.x === 1 || vector.x === -1) {
     this.grid.player_tile.forEach(function(value){
       traversals.x.push(value.x);
       traversals.y.push(value.y);
     })
   }
-      // if(vector.y == 0) traversals.y = [0]
-  /*if(vector.y == 0) { // && vector.x == 0) {
-      traversals.x = [];
-      traversals.y = [];
-      for (var i = 0; i < this.grid.falling.length; i++) {
-        alert("asd")
-        traversals.x.push(this.grid.falling[i].x); 
-        traversals.y.push(this.grid.falling[i].y);
-      }
-  };*/
-  // if(vector.y == 0) traversals.y = [0]
   if(vector.y == 0 && vector.x == 0)  { // && vector.x == 0) {
     traversals.x = [this.grid.falling.x]; 
     traversals.y = [this.grid.falling.y];
@@ -427,12 +373,8 @@ GameManager.prototype.findFarthestPosition = function (cell, vector) {
         if(cell.x >= this.size) cell.x = 0; 
         else if(cell.x < 0) cell.x = this.size - 1;
 
-        /*if(vector.x == 0){
-          if(cell.y >= this.size + 1) cell.y = 0;
-        }*/
-
         if(this.grid.withinBounds(cell) && this.grid.cellAvailable(cell)) {
-        previous = cell; //cell = { x: previous.x + vector.x, y: previous.y + vector.y };          
+          previous = cell;     
         if(vector.x == 0)vector.y = 0;
         }
   } else {
