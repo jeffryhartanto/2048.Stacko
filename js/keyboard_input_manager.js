@@ -65,7 +65,6 @@ KeyboardInputManager.prototype.listen = function () {
         } 
         
         //self.emit("move", mapped);
-        
         self.emit("player_move",mapped);
       }
       if (event.which === 32) { event.preventDefault(); pause(); }
